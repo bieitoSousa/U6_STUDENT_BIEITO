@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".u6_student_bieito"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button_pce_id"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:text="@string/button_pce_text" />
+    <Button
+        android:id="@+id/button_province_id"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/button_province_text" />
+
+    <Button
+        android:id="@+id/btnCalculadora"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/lanzar_calculadora"/>
+
+    <Button
+        android:id="@+id/btnEmail"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/lanzar_email"/>
+
+</LinearLayout>

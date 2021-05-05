@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">U6_STUDENT_BIEITO</string>
+    <string name="button_province_text">PROVINCIA USUARIO</string>
+    <string name="button_pce_text">PROVINCIA/CALCULADORA/EMAIL</string>
+    <string name="lanzar_calculadora">Lanzar Calculadora</string>
+    <string name="lanzar_email">Lanzar Email</string>
+</resources>
