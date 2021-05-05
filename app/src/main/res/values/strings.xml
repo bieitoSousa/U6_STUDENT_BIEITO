@@ -4,4 +4,10 @@
     <string name="button_pce_text">PROVINCIA/CALCULADORA/EMAIL</string>
     <string name="lanzar_calculadora">Lanzar Calculadora</string>
     <string name="lanzar_email">Lanzar Email</string>
+    <string name="title_dialog">Escoge una opcion</string>
+    <string name="lanzar_dialog">Lanzar dialog</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lanzar_Dialog_Fragment">Lanzar Dialog Fragment</string>
+    <string name="lanzar_Dialog">Lanzar Dialog</string>
 </resources>

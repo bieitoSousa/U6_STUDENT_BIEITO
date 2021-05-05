@@ -30,4 +30,16 @@
         android:layout_width="match_parent"
         android:text="@string/lanzar_email"/>
 
+    <Button
+        android:id="@+id/btnDialog"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/lanzar_Dialog"/>
+
+    <Button
+        android:id="@+id/btnDialogFragment"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/lanzar_Dialog_Fragment"/>
+
 </LinearLayout>

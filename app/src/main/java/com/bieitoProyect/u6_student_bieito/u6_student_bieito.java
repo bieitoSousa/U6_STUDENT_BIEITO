@@ -1,32 +1,43 @@
 package com.bieitoProyect.u6_student_bieito;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
+
+import com.bieitoProyect.u6_student_bieito.Dialog.Dlg_Fragments;
 import com.bieitoProyect.u6_student_bieito.Intent.intent_province;
 
-public class u6_student_bieito extends AppCompatActivity {
+public class u6_student_bieito extends AppCompatActivity implements View.OnClickListener{
 
     public final String ACCION_VISUALIZAR = "ACCION_VISUALIZAR";
     public final static String PROVINCE = "province";
     private final int COD_PETICION = 33;
+    private Dlg_Fragments dialogoFragmento;
 
 
     private void xestionarEventos() {
         intentProvinceEvent();
         calculadoraEvent();
         emailEvent();
+        longClickDialogEvent();
+        dialogEvent();
+        dialogFrgmentEvent();
     }
 
 
     private void intentProvinceEvent(){
-        findViewById(R.id.button_pce_id).setOnClickListener(new View.OnClickListener() {
+        Button button_pce = findViewById(R.id.button_pce_id);
+        button_pce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // Intent intentProvince = new Intent();
@@ -37,6 +48,14 @@ public class u6_student_bieito extends AppCompatActivity {
                     startActivityForResult(intentProvince, COD_PETICION);
                 }
             }
+        });
+        button_pce.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                dialogFrament();
+                return true;
+            }
+
         });
     }
     private void calculadoraEvent(){
@@ -76,6 +95,66 @@ public class u6_student_bieito extends AppCompatActivity {
         });
     }
 
+    private void longClickDialogEvent(){
+        //Botón para lanzar a calculadora do S.O.
+        Button btnCalculadora = findViewById(R.id.btnCalculadora);
+        btnCalculadora.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder venta;
+                venta = new AlertDialog.Builder(u6_student_bieito.this);
+                venta.setIcon(android.R.drawable.ic_dialog_alert);
+                venta.setTitle(R.string.title_dialog);
+                venta.setItems(R.array.dialog_array, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int posicion) {
+                        // O usuario selecciona unha das opcións do listado
+                        String[] opcions = getResources().getStringArray(R.array.dialog_array);
+                        Toast.makeText(getApplicationContext(), "Seleccionaches: '" + opcions[posicion] + "'", Toast.LENGTH_LONG).show();
+                    }
+                });
+                venta.create();
+                return true;
+            }
+    });
+    }
+
+    private void dialogFrament(){
+        DialogFragment dialogoFragmento = new Dlg_Fragments();
+        dialogoFragmento.show( getSupportFragmentManager(), "EXEMPLO DE DIALOGO!!!!");
+    }
+    private void dialogEvent(){
+        Button btnDialog = findViewById(R.id.btnDialog);
+        btnDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder venta;
+                venta = new AlertDialog.Builder(u6_student_bieito.this);
+                venta.setIcon(android.R.drawable.ic_dialog_alert);
+                venta.setTitle(R.string.title_dialog);
+                venta.setItems(R.array.dialog_array, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int posicion) {
+                        // O usuario selecciona unha das opcións do listado
+                        String[] opcions = getResources().getStringArray(R.array.dialog_array);
+                        Toast.makeText(getApplicationContext(), "Seleccionaches: '" + opcions[posicion] + "'", Toast.LENGTH_LONG).show();
+                    }
+                });
+                venta.create();
+            }
+        });
+    }
+
+    private void dialogFrgmentEvent(){
+        Button btnDialogFragment = findViewById(R.id.btnDialogFragment);
+        btnDialogFragment.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                dialogFrament();
+                return true;
+            }
+
+        });
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == COD_PETICION) {
@@ -83,7 +162,6 @@ public class u6_student_bieito extends AppCompatActivity {
                 if (data.hasExtra(u6_student_bieito.PROVINCE)) {
                     Toast.makeText(this, "\nAtua provincia é: " + data.getExtras().getString(PROVINCE), Toast.LENGTH_SHORT).show();
                 }
-
             } else
                 Toast.makeText(this, "Saíches da actividade secundaria sen premer o botón Pechar", Toast.LENGTH_SHORT).show();
         }
@@ -100,8 +178,10 @@ public class u6_student_bieito extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_u6_student_bieito);
         xestionarEventos();
+    }
 
-
+    @Override
+    public void onClick(View v) {
 
     }
 }
