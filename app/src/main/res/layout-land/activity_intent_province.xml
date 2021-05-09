@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Intent.intent_province"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_gravity="center">
 
     <EditText
         android:id="@+id/etProvinceName"

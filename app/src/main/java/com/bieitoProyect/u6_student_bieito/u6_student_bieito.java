@@ -15,7 +15,7 @@ import com.bieitoProyect.u6_student_bieito.Intent.intent_province;
 public class u6_student_bieito extends AppCompatActivity {
 
     public final static String PROVINCE = "province";
-    public static String valueProvince ="";
+    public static String valueProvince = "";
     private final int COD_PETITION = 33;
     public final static int RESULT_EMPTY = 3;
 
@@ -37,7 +37,8 @@ public class u6_student_bieito extends AppCompatActivity {
         });
         button_pce.setOnLongClickListener(v -> {
             DialogFragment dialogFragment = new Dlg_Fragments();
-            dialogFragment.show(getSupportFragmentManager(), "EXEMPLO DE DIALOGO!!!!");
+            String stringDialogTag = getString(R.string.diaologTag);
+            dialogFragment.show(getSupportFragmentManager(), stringDialogTag);
             return true;
         });
     }
@@ -46,12 +47,12 @@ public class u6_student_bieito extends AppCompatActivity {
 
         Button button_showProvince = findViewById(R.id.button_province_id);
         button_showProvince.setOnClickListener(v -> {
-        if (valueProvince.equals("")) {
-            Toast.makeText(getApplicationContext(), "Teclea una provincia", Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(getApplicationContext(), "La provincia del usuario es: " + valueProvince, Toast.LENGTH_LONG).show();
-        }
+            if (valueProvince.equals("")) {
+                Toast.makeText(getApplicationContext(), R.string.emptyProvince, Toast.LENGTH_LONG).show();
+            } else {
+                String stringShowProvince = getString(R.string.showProvince) + " ";
+                Toast.makeText(getApplicationContext(), stringShowProvince + valueProvince, Toast.LENGTH_LONG).show();
+            }
         });
     }
 
@@ -61,20 +62,22 @@ public class u6_student_bieito extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 System.out.println(data);
                 if (data.hasExtra(u6_student_bieito.PROVINCE)) {
-                    valueProvince =  data.getExtras().getString(u6_student_bieito.PROVINCE);
-                    Toast.makeText(this, "\nAtua provincia é: " + valueProvince, Toast.LENGTH_SHORT).show();
+                    valueProvince = data.getExtras().getString(u6_student_bieito.PROVINCE);
+                    String stringShowProvince = getString(R.string.showProvince) + " ";
+                    Toast.makeText(getApplicationContext(), stringShowProvince + valueProvince, Toast.LENGTH_LONG).show();
                 }
             } else if (resultCode == RESULT_EMPTY) {
-                Toast.makeText(this, "Non escribiches a provincia", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.emptyProvince, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Saíches da actividade secundaria sen premer o botón Pechar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.backActivity, Toast.LENGTH_SHORT).show();
             }
 
         }
     }
+
     public void finish() {
         super.finish();
-        Toast.makeText(this, "Mataches a actividade principal", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.mainActivityFinish, Toast.LENGTH_SHORT).show();
     }
 
     @Override
