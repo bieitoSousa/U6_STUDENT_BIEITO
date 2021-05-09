@@ -18,28 +18,4 @@
         android:layout_width="match_parent"
         android:text="@string/button_province_text" />
 
-    <Button
-        android:id="@+id/btnCalculadora"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/lanzar_calculadora"/>
-
-    <Button
-        android:id="@+id/btnEmail"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/lanzar_email"/>
-
-    <Button
-        android:id="@+id/btnDialog"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/lanzar_Dialog"/>
-
-    <Button
-        android:id="@+id/btnDialogFragment"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/lanzar_Dialog_Fragment"/>
-
 </LinearLayout>

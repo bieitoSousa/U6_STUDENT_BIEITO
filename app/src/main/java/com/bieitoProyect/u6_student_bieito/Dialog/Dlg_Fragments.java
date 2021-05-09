@@ -7,17 +7,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.bieitoProyect.u6_student_bieito.R;
 
 /**
-
+ *
  */
 public class Dlg_Fragments extends DialogFragment {
     @Override
@@ -30,10 +23,11 @@ public class Dlg_Fragments extends DialogFragment {
                         // The 'which' argument contains the index position
                         // of the selected item
                         switch (pos) {
-                            case 0 : calculadoraEvent();
+                            case 0:
+                                launchCalculatorIntent();
                                 break;
-
-                            case 1 : calculadoraEvent();
+                            case 1:
+                                launchEmailIntent();
                                 break;
                             default:
                                 break;
@@ -42,10 +36,20 @@ public class Dlg_Fragments extends DialogFragment {
                 });
         return builder.create();
     }
-    private void calculadoraEvent(){
 
-                Intent intent = new Intent();
-                intent.setClassName("com.android.calculator2", "com.android.calculator2.Calculator");
-                startActivity(intent);
-            }
+    private void launchCalculatorIntent() {
+        Intent intent = new Intent();
+        intent.setClassName("com.android.calculator2", "com.android.calculator2.Calculator");
+        startActivity(intent);
+    }
+
+    private void launchEmailIntent() {
+        Intent intent1 = new Intent(Intent.ACTION_SEND);
+        intent1.setType("application/octet-stream");
+        intent1.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+        intent1.putExtra(Intent.EXTRA_TEXT, "Texto do email");
+        intent1.putExtra(Intent.EXTRA_EMAIL, new String[]{"android@cursoandroid.es"});
+        startActivity(intent1);
+
+    }
 }
